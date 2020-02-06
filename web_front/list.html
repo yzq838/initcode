@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>大事件-列表页</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -45,99 +46,22 @@
         <div class="left_con setfr">
 
             <div class="list_title">
-                <h3>科 技</h3>
+                <h3 id="cateName">科 技</h3>
             </div>
 
-            <div class="common_news_list">
-                <a href="#" class="list_pic"><img src="images/pic09.jpg" alt=""></a>
-                <h4><a href="#">亚马逊金融试水中国？背后却是和华尔街的“金融战争” </a></h4>
-                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
-                </p>
-                <div class="new_info">
-                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
-                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
-                    <b>发布于 2018-08-30 12:18:58</b>
-                </div>
+            <div id="list">
+                <!-- 用来显示文章列表的容器 -->
             </div>
 
-            <div class="common_news_list">
-                <a href="#" class="list_pic"><img src="images/pic03.jpg" alt=""></a>
-                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱,马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
-                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
-                </p>
-                <div class="new_info">
-                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
-                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
-                    <b>发布于 2018-08-30 12:18:58</b>
-                </div>
-            </div>
+            <!-- 分页 -->
+            <ul id="pagination" class="pagination-sm"></ul>
 
-            <div class="common_news_list">
-                <a href="#" class="list_pic"><img src="images/pic05.jpg" alt=""></a>
-                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
-                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
-                </p>
-                <div class="new_info">
-                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
-                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
-                    <b>发布于 2018-08-30 12:18:58</b>
-                </div>
-            </div>
-
-            <div class="common_news_list">
-                <a href="#" class="list_pic"><img src="images/pic07.jpg" alt=""></a>
-                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
-                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
-                </p>
-                <div class="new_info">
-                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
-                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
-                    <b>发布于 2018-08-30 12:18:58</b>
-                </div>
-            </div>
-
-            <div class="common_news_list">
-                <a href="#" class="list_pic"><img src="images/pic10.jpg" alt=""></a>
-                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
-                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
-                </p>
-                <div class="new_info">
-                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
-                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
-                    <b>发布于 2018-08-30 12:18:58</b>
-                </div>
-            </div>
-
-            <div class="common_news_list">
-                <a href="#" class="list_pic"><img src="images/pic04.jpg" alt=""></a>
-                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
-                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
-                </p>
-                <div class="new_info">
-                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
-                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
-                    <b>发布于 2018-08-30 12:18:58</b>
-                </div>
-            </div>
-
-            <div id="pagination" class="page"></div>
-            <script>
-                $(function () {
-                    $("#pagination").pagination({
-                        currentPage: 2,
-                        totalPage: 8,
-                        callback: function (current) {
-                            alert('ok!');
-                        }
-                    });
-                });
-            </script>
 
         </div>
         <div class="right_con setfl">
             <div class="common_wrap">
                 <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
-                <ul class="content_list">
+                <ul class="content_list" id="rank">
                     <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
                     <li><span class="second">2</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><span class="third">3</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
@@ -212,12 +136,12 @@
     </div>
 
     <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery.twbsPagination.js"></script>
     <script src="./js/template-web.js"></script>
     <script src="./js/util/config.js"></script>
     <script src="./js/util/category.js"></script>
     <script src="./js/util/article.js"></script>
-
-
+    <script src="./js/lazyload.js"></script>
     <!-- 
         文章类型
         把当前的列表中对应的文章编号高亮显示
@@ -235,6 +159,39 @@
         {{/each}}
     </script>
 
+    <!-- 文章列表 -->
+    <script id="tmpNews" type="text/html">
+        {{each data item}}
+            <div class="common_news_list">
+                <a href="./article.html?id={{item.id}}" class="list_pic">
+                    <img class="img" data-src="{{item.cover}}" src="./images/pic02.jpg" alt=""></a>
+                <h4><a href="./article.html?id={{item.id}}">{{item.title}}</a></h4>
+                <p>{{item.content}}</p>
+                <div class="new_info">
+                    <span>标签：{{item.type}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读({{item.read}}
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{item.comment}} )</span>
+                    <b>发布于 {{item.date}}</b>
+                </div>
+            </div>
+        {{/each}}
+    </script>
+
+    <!-- 排行榜
+        前三名有自已的class
+    -->
+    <script id="tmpRank" type="text/html">
+        {{each data item idx}}
+            {{if idx == 0}}
+                <li><span class="first">{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+            {{else if idx == 1}}
+                <li><span class="second">{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+            {{else if idx == 2}}
+                <li><span class="third">{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+            {{else}}
+                <li><span>{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+            {{/if}}
+        {{/each}}
+    </script>
     <script>
         // 1. 从地址栏中获取出id
         // window.localtion  http://127.0.0.1:5500/web_front/list.html?id=1
@@ -246,7 +203,7 @@
         category.get().then(function (res) {
             // 补充一个属性来保存当前的类别编号，以方便在模板内部来获取这个编号
             res.curId = id
-            console.log(res);
+
             // 渲染结构
             var htmlStr = template('cate', res)
             // console.log(htmlStr);
@@ -256,7 +213,80 @@
 
             // 追加一些内容
             $('#level_two_menu').append(htmlStr)
+
+            // res.data是一个数组，每一个元素就是一对象
+            // 取出对象的id属性与当前地址栏中id进行比较，找到要显示在页面上的栏目的 文字
+            res.data.forEach(function (item) {
+                console.log(item)
+                if (item.id == id) {
+                    $('#cateName').html(item.name)
+                    // alert( item.name )
+                }
+            })
         })
+
+        // 3. 显示文章列表
+        var curPage = 1; // 当前的要取回第几页的文章
+        // 调用接口拿数据，并显示
+        getAndShow()
+
+        // 4. 热门排行
+        // id就是当前的类别编号
+        article.getRank(id).then(function (res) {
+            console.log(res);
+            if (res.code === 200) {
+                // 渲染
+                var htmlStr = template('tmpRank', res)
+                console.log(htmlStr);
+                $('#rank').html(htmlStr)
+
+            } else {
+                alert(res.msg)
+            }
+        })
+
+
+        // 定义一个函数，是为了在页码点击上去调用
+        function getAndShow() {
+            article.getList(id, curPage).then(function (res) {
+                console.log(res);
+                // res.pages表示当前查询条件得到的数据的总页数
+                var htmlStr = template('tmpNews', res)
+                // 数据渲染
+                console.log(htmlStr);
+                $('#list').html(htmlStr)
+
+                //懒加载 它会自动挂到jquery上
+                $('.img').lazyload()
+
+                // 如果只有一页，则不需要显示分页条
+                if (res.pages <= 1) {
+                    return
+                }
+                // 分页的基础代码
+                $('#pagination').twbsPagination({
+                    initiateStartPageClick: false,
+                    totalPages: res.pages, // 总页数
+                    // 这个visiblePages有什么用处？
+                    visiblePages: 2, // 最多可以显示的按钮
+                    first: '首页',
+                    prev: '上一页',
+                    next: '下一页',
+                    last: '尾页',
+                    onPageClick: function (event, page) {
+                        // page是当前用户点击的页码
+                        // 更新全局变量，重新查询
+                        curPage = page
+                        // 为什么不需要传入参数？ 它是如何达到获取指定页的数据 功能？
+                        // 全局变量
+                        getAndShow();
+                    }
+                });
+            })
+        }
+
+
+
     </script>
 
 </body>
