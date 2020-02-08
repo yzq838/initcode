@@ -55,13 +55,33 @@
                     </tr>
                 </thead>
                 <tbody id="tbody">
-
+                    <!-- <tr>
+                        <td>王积千造统最头</td>
+                        <td>杰克</td>
+                        <td>奇趣事</td>
+                        <td class="text-center">2017-06-08 07:08:46</td>
+                        <td class="text-center">已发布</td>
+                        <td class="text-center">
+                            <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
+                            <a href="javascript:deleteTr( 1005 );" class="btn btn-danger btn-xs">删除</a>
+                        </td>
+                    </tr> -->
                 </tbody>
             </table>
 
             <div class="row text-center">
                 <ul class="pagination pagination-sm" id="pagination">
-
+                    <!-- <li class="page-item first disabled"><a href="#" class="page-link">首页</a></li>
+                    <li class="page-item prev disabled"><a href="#" class="page-link">上一页</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">6</a></li>
+                    <li class="page-item"><a href="#" class="page-link">7</a></li>
+                    <li class="page-item next"><a href="#" class="page-link">下一页</a></li>
+                    <li class="page-item last"><a href="#" class="page-link">尾页</a></li> -->
                 </ul>
             </div>
 
@@ -77,7 +97,7 @@
     <script src="./js/util/config.js"></script>
     <script src="./js/util/category.js"></script>
     <script src="./js/util/article.js"></script>
-
+    
     <script src="./js/template-web.js"></script>
 
     <!-- 分页插件 -->
@@ -111,7 +131,7 @@
 
     <script>
 
-
+        
         var curPage = 1;    // 全局变量，表示当前要查询第几页的数据
         var curType = '';   // 全局变量，表示当前要查询文章的类型编号
         var curStatus = ''; // 全局变量，表示当前要查询文章的状态
@@ -120,31 +140,31 @@
         // 1. 获取所有的文章类别信息，并显示在下拉列表中
         // 思路：
         // 调用接口，获取数据，用arttemplate渲染到页面上
-        category.get().then(function (res) {
+        category.get().then(function(res){
             // console.log(res);
             // arttemplate渲染到页面
             var htmlstr = template('tmp_category', res)
             console.log(htmlstr);
-            $('#selCategory').html(htmlstr)
+            $('#selCategory').html( htmlstr )
         })
 
         // 2. 获取文章列表，并显示在表格
         // 思路：
         // 调用接口，获取数据，用arttempaltte渲染到表格
         function getAndShow() {
-            article.get(curPage, curType, curStatus).then(function (res) {
+            article.get(curPage,curType,curStatus).then(function(res){
                 // console.log(res);
-                if (res.code === 200) {
+                if( res.code === 200){
                     // （1） arttempaltte渲染到表格
                     var htmlStr = template('tmp_table', res)
-                    $('#tbody').html(htmlStr)
+                    $('#tbody').html( htmlStr )
 
                     // (2) 设置分页插件
                     // 如果前后两次获取到总页码不一样，则要把分页插件：
                     //   destroy()
                     //   再来重新设置
                     // 这样才能保存总页数显示正常
-                    if (curTotalPage !== res.totalPage) {
+                    if(curTotalPage !== res.totalPage){
                         $('#pagination').twbsPagination('destroy')
                         curTotalPage = res.totalPage
                     }
@@ -153,11 +173,11 @@
                     $('#pagination').twbsPagination({
                         totalPages: res.totalPage, // 总页数
                         visiblePages: 5,
-                        first: '首页',
-                        last: '尾页',
-                        prev: '上一页',
-                        next: '下一页',
-                        initiateStartPageClick: false, // 初始时，不要去点击起始页
+                        first:'首页',
+                        last:'尾页',
+                        prev:'上一页',
+                        next:'下一页',
+                        initiateStartPageClick:false, // 初始时，不要去点击起始页
                         onPageClick: function (event, page) {
                             // 重新去取 第page页的数据
                             curPage = page
@@ -169,22 +189,22 @@
                 } else {
                     alert(res.msg)
                 }
-
+                
             })
         }
-
+        
         getAndShow();
 
         // 3. 文章筛选 
         // 思路：
         // （1）获取用户当前的选择
         //  (2) 调用接口，传入用户的选项
-        $('#btnSearch').click(function () {
+        $('#btnSearch').click(function(){
             //    把页码重置为第一页
             curPage = 1
             // 把用户的选择保存到全局变量中
-            curType = $('#selCategory').val() // 文章类型编号
-            curStatus = $('#selStatus').val() // 文章状态
+           curType = $('#selCategory').val() // 文章类型编号
+           curStatus = $('#selStatus').val() // 文章状态
             // console.log(type,status);
             // 再去做查询并显示
             getAndShow();
@@ -197,17 +217,17 @@
         // 思路：
         // (1)给父容器加事件委托，实现删除按钮的点击
         // (2)获取id，调用接口，根据反馈，做后续
-        $('#tbody').on('click', '.del', function () {
+        $('#tbody').on('click','.del',function(){
             // 原则：让代码尽早结束
-            if (!confirm('你确定要删除吗？')) {
-                return
+            if(!confirm('你确定要删除吗？')) {
+                return 
             }
 
             var id = $(this).attr('data-id')
             // alert(id)
-            article.del(id).then(function (res) {
+            article.del(id).then(function(res){
                 console.log(res);
-                if (res.code === 200) {
+                if(res.code === 200){
                     // 删除成功
                     // 重新获取
                     getAndShow()

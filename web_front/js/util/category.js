@@ -5,7 +5,11 @@ var category = {
     get:function(){
         return $.get(APILIST.category_get)
     },
-    // 添加文章类型
+    /**
+     * 添加文章类型
+     * @param {*} name 
+     * @param {*} slug 
+     */
     add:function(name,slug){
         return $.post(APILIST.category_add,{'name':name ,'slug':slug })
     },

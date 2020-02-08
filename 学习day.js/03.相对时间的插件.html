@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>使用dayjs</h1>
+    <script src="../js库/dayjs/dayjs.min.js"></script>
+    <!--  引入对应的语言包 -->
+    <script src="../js库/dayjs/zh_cn.js"></script>
+
+    <!--  引入相对时间插件 -->
+    <script src="../js库/dayjs/relative.min.js"></script>
+    <script>
+
+        dayjs.locale('zh-cn') ; // 全局设置，中文
+
+        // 使用插件
+        dayjs.extend(dayjs_plugin_relativeTime);
+
+        // fromNow,to 是由这个插件 relative.min.js提供的功能
+    
+        console.log( dayjs(1580971617788).fromNow());
+
+        console.log(dayjs(1580818968754).to(Date.now()));
+
+
+
+        
+    </script>
+</body>
+</html>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
     <link type="text/css" rel="stylesheet" href="js/jedate/css/jedate.css">
-
+    
 </head>
 
 <body>
@@ -38,7 +38,7 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
                         <select class="form-control" id="type" name="type">
-
+                           
                         </select>
                     </div>
                 </div>
@@ -58,8 +58,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="rich_content" name="content" placeholder="文章内容"
-                            value="文章内容">
+                        <input type="text" class="form-control" id="rich_content" name="content" placeholder="文章内容" value="文章内容">
                     </div>
                 </div>
                 <div class="form-group">
@@ -105,10 +104,10 @@
 
         // 2. 根据id去取回这篇文章的信息，并显示在页面上
         var id = window.location.search.substr(4)
-
+        
         getAndShowCategory()
         // 3. 实现保存编辑
-        $('#saveBtn').click(function () {
+        $('#saveBtn').click(function(){
             // - 收集数据
             var fd = new FormData(document.getElementById('form'))
             // 要获取formdate中的数据，注意把name属性设置成与接口中的参数一一对应。
@@ -116,66 +115,66 @@
             // 追加id
             fd.append("id", id)
             fd.set('content', tinymce.activeEditor.getContent())
-            article.edit(fd).then(function (res) {
+            article.edit(fd).then(function(res){
                 console.log(res);
-                if (res.code === 200) {
+                if(res.code === 200){
                     alert("保存成功")
                 } else {
                     alert(res.msg)
                 }
-
+                
             })
-
+            // - 调用接口
+            // - 根据接口反馈做后续动作
         })
 
 
         // 接下来要调用接口去取信息
         function getAndShow(id) {
-            article.getById(id).then(function (res) {
+            article.getById(id).then(function(res){
                 console.log(res);
-                if (res.code === 200) {
+                if(res.code === 200){
                     // 把结果显示在页面上：把数据填入到表单中
-                    $('#title').val(res.data.title)
-                    $('#previewImg').attr('src', res.data.cover)
+                    $('#title').val( res.data.title )
+                    $('#previewImg').attr('src', res.data.cover )
                     $('#dateinput').val(res.data.date)
 
                     $('#type').val(res.data.type)
-
+                    
                     // 给富文件编辑器，设置内容
-                    setTimeout(function () {
+                    setTimeout (function(){
                         // tinymce.activeEditor.setContent能生效的前提是
                         // 富文本编辑器已经就绪了。如果说ajax数据回来了，但是富文本编辑器还没有绪
                         // 它就可以会报错，所以给它加一点延迟。
-                        tinymce.activeEditor.setContent(res.data.content)
-                    }, 1000)
+                        tinymce.activeEditor.setContent( res.data.content )
+                    },1000)
                 } else {
                     alert(res.msg)
-                }
+                } 
             })
         }
-
-        function getAndShowCategory() {
-            category.get().then(function (res) {
+        
+        function getAndShowCategory(){
+            category.get().then(function(res){
                 console.log(res);
-                if (res.code === 200) {
-                    var htmlStr = template('cate', res)
+                if(res.code ===200){
+                    var htmlStr = template('cate',res)
                     console.log(htmlStr);
                     // 写入select
-                    $('#type').html(htmlStr)
+                    $('#type').html( htmlStr )
                     // 让一个下拉框选中指定的文章的类型
                     // $('#type').val(1580867650235)
 
                     // 类别获取完成之后，再去获取并显示文章详情
                     getAndShow(id)
-                } else {
+                }else{
                     alert(res.msg)
                 }
-
+                
             })
         }
 
-
+        
     </script>
 </body>
-
 </html>

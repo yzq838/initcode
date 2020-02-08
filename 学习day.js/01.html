@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>使用dayjs</h1>
+    <script src="../js库/dayjs/dayjs.min.js"></script>
+    <script>
+        var dt = dayjs('2020-02-06')
+        console.log(dt);
+
+       console.log(  dayjs().add(7, 'day').format('dddd') )
+
+        // // c {$L: "en", $d: Thu Feb 13 2020 15:19:41 GMT+0800 (中国标准时间), $y: 2020, $M: 1, $D: 13, …}
+        // dayjs().add(7, 'day').format()
+        // // "2020-02-13T15:20:18+08:00"
+        // dayjs().add(7, 'month').format()
+        // // "2020-09-06T15:20:30+08:00"
+        // dayjs().endOf('month');
+        // // c {$L: "en", $d: Sat Feb 29 2020 23:59:59 GMT+0800 (中国标准时间), $y: 2020, $M: 1, $D: 29, …}
+        // dayjs().endOf('month').format()
+        // // "2020-02-29T23:59:59+08:00"
+        // dayjs().endOf('month').day()
+        // // 6
+        // dayjs().endOf('month').date()
+        
+    </script>
+</body>
+</html>

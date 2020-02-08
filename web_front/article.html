@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>大事件-文章</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -13,7 +13,7 @@
 
 <body>
     <div class="header">
-        <a href="#" class="logo fl"><img src="images/logo.png" alt="logo"></a>
+        <a href="./index.html" class="logo fl"><img src="images/logo.png" alt="logo"></a>
         <div class="search_form fl">
             <input type="text" class="search_txt" placeholder="黑洞照片">
             <button class="search_btn"><i class="fa fa-search"></i></button>
@@ -58,10 +58,10 @@
             <div class="breadcrumb">
                 当前位置： <a href="#">首页</a> &gt; <a href="#">科技</a> &gt; 文章详情
             </div>
-            <h3 class="article_title">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</h3>
-            <div class="article_info">杰克 发布于 2019-05-08 07:08:46&nbsp;&nbsp;&nbsp;分类: 奇趣事&nbsp;&nbsp;&nbsp;阅读:
-                (98)&nbsp;&nbsp;&nbsp;评论: (0)</div>
-            <div class="article_con">
+            <h3 class="article_title" id="title"></h3>
+            <div class="article_info"><span id="author"></span> 发布于 <span id="date"></span>&nbsp;&nbsp;&nbsp;分类: <span id="type_name"></span>
+                &nbsp;&nbsp;&nbsp;阅读:( <span id="read"></span> )&nbsp;&nbsp;&nbsp;评论: (<span id="comment"></span>)</div>
+            <div class="article_con" id="content">
 
                 <p>“上天入地”还不够？硅谷“钢铁侠”马斯克名下一家低调的公司最近又融了一大笔钱。</p>
 
@@ -76,56 +76,30 @@
 
             </div>
             <div class="article_links">
-                上一篇： <a href="#">世界第一台可以玩游戏的冰箱</a><br>
-                下一篇： <a href="#">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
+                上一篇： <a href="#" id="prev">世界第一台可以玩游戏的冰箱</a><br>
+                下一篇： <a href="#" id="next">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
             </div>
 
             <form action="" class="comment_form">
                 <div class="form_group">
                     <label>用户名：</label>
-                    <input type="text" placeholder="请输入用户名" class="comment_name">
+                    <input type="text" placeholder="请输入用户名" class="comment_name" id="comment_name">
                 </div>
                 <div class="form_group">
                     <label>评论内容：</label>
-                    <textarea placeholder="请发表您的评论" class="comment_input"></textarea>
+                    <textarea placeholder="请发表您的评论" class="comment_input" id="comment_content"></textarea>
                 </div>
                 <div class="form_group">
-                    <input type="submit" name="" value="评 论" class="comment_sub"></div>
+                    <input type="button" name="" value="评论" id="btn" class="comment_sub">
+                </div>
             </form>
 
             <div class="comment_count">
                 4条评论
             </div>
 
-            <div class="comment_list_con">
-                <div class="comment_detail_list">
-                    <div class="person_pic fl">乔</div>
-                    <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-                    <div class="comment_text fl">
-                        遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-                    </div>
-                </div>
-                <div class="comment_detail_list">
-                    <div class="person_pic fl">段</div>
-                    <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-                    <div class="comment_text fl">
-                        遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-                    </div>
-                </div>
-                <div class="comment_detail_list">
-                    <div class="person_pic fl">虚</div>
-                    <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-                    <div class="comment_text fl">
-                        遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-                    </div>
-                </div>
-                <div class="comment_detail_list">
-                    <div class="person_pic fl">王</div>
-                    <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-                    <div class="comment_text fl">
-                        遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-                    </div>
-                </div>
+            <div class="comment_list_con" id="comment_list">
+                
             </div>
         </div>
         <div class="right_con setfl">
@@ -204,6 +178,133 @@
         <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
         <p>电话：0755-****888 粤ICP备*******8号</p>
     </div>
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.3/bootbox.min.js'></script>
+
+    <script src="./js/template-web.js"></script>
+    <script src="./js/util/config.js"></script>
+    <script src="./js/util/article.js"></script>
+    <script src="./js/util/comment.js"></script>
+
+    <!-- 引入日期时间的js库 dayjs -->
+    <script src="./js/dayjs/dayjs.min.js"></script>
+    <script src="./js/dayjs/zh_cn.js"></script>
+    <script src="./js/dayjs/relative.min.js"></script>
+
+
+    <script id="tmp" type="text/html">
+        {{each data item}}
+        <div class="comment_detail_list">
+            <div class="person_pic fl">{{item.name.substr(0,1)}}</div>
+            <div class="name_time fl"><b>{{item.name}}</b><span>{{item.relativeTime}}</span></div>
+            <div class="comment_text fl">
+                {{item.content}}
+            </div>
+        </div>
+        {{/each}}
+
+    </script>
+    
+    <script>
+
+        dayjs.locale('zh-cn') ; // 全局设置，中文
+        // 使用插件
+        dayjs.extend(dayjs_plugin_relativeTime);
+
+
+        // 1. 获取从地址栏中传入的文章编号
+        // http://127.0.0.1:5500/web_front/article.html?id=1576408259770
+        // location.search  : ?id=1576408259770
+        // location.search.substr(4): 从下标为4的地方开始取子字符串，直到结束
+        var id = location.search.substr(4)
+        // alert(id)
+
+        // 2. 调用接口，获取这篇文章的详情，显示到页面上
+        article.getDetail(id).then(function(res){
+            console.log(res);
+            if(res.code == 200){
+                var t = res.data
+                // 给对应的dom元素赋值
+                $('#author').html( t.author);
+                $('#comment').html(t.comment);
+                $('#content').html(t.content);
+                $('#date').html(t.date);
+                //上，下文章导航
+                // 有的文章有一篇，有的可能没有，所以要先判断一下。
+                if(t.prev) {
+                    $('#prev').attr('href','./article.html?id='+t.prev.id);
+                    $('#prev').text(t.prev.title);
+                } else {
+                    $('#prev').text('无');
+                }
+                if(t.next) {
+                    $('#next').attr('href','./article.html?id='+t.next.id)
+                    $('#next').text(t.next.title)
+                }else {
+                    $('#next').text('无');
+                }
+
+
+                $('#read').html(t.read);
+                $('#title').html(t.title);
+                $('#type_name').html(t.type_name);
+
+            } 
+        })
+
+        // 3. 获取并显示评论
+        getComment()
+        // 4. 添加评论
+        $('#btn').click(function(){
+            // - 收集用户信息
+            var name = $('#comment_name').val().trim()
+            var content = $('#comment_content').val().trim()
+
+            if(name.length === 0 || content.length ===0){
+                bootbox.alert("不能为空");
+                return;
+            }
+
+            // - 调用接口，根据反馈做后续动作
+            comment.add(name,content, id).then(function(res){
+                console.log(res);
+                if(res.code === 200) {
+                    // 评论成功
+                    // 1. 清空评论区域
+                    $('#comment_name').val('')
+                    $('#comment_content').val('')
+                    // 2. 去重新加载评论并显示
+                    getComment()
+                }
+            })
+        })
+    
+
+        function getComment(){
+            comment.get(id).then(function(res){
+                if(res.code ==200){
+                    // 对每一条留言中的dt进行格式化
+                    // 具体就是从 时间戳 转成相对时间
+                    res.data.forEach(function(item){
+                        // item.relativeTime = item.dt --->相对时间
+                        // item.relativeTime = getRelativeTime(item.dt)
+                        item.relativeTime =  dayjs(item.dt).fromNow()
+                        
+                    })
+                    console.log(res.data);
+                    var htmlStr = template('tmp', res)
+                    $('#comment_list').html( htmlStr )
+                }
+            })
+        }
+
+        // 创建一个函数，专门用来把时间戳转成相对时间 
+        function getRelativeTime(dt){
+            return dayjs(dt).fromNow();
+        }
+    </script>
 
 </body>
 
