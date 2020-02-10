@@ -44,20 +44,20 @@
         // 给按钮添加点击事件：
         // （1）收集用户信息，简单判断.
         //  (2) 请求ajax接口，根据接口的反馈做后续的动作
-        $('#btnLogin').click(function(){
-            var name =  $('#username').val().trim()
+        $('#btnLogin').click(() => {
+            var name = $('#username').val().trim()
             var password = $('#password').val().trim()
-            if(name.length === 0 || password.length === 0){
+            if (name.length === 0 || password.length === 0) {
                 alert('不能为空')
                 return
             }
-            
+
             // 用户登陆
-            user.login(name, password).then(function(res){
+            user.login(name, password).then(res => {
                 // 从服务器返回的值
                 console.log(res)
                 //2. 反馈做后续的动作
-                if(res.code === 200){
+                if (res.code === 200) {
                     // alert('登陆成功')
                     // 跳到主页
                     window.location.href = "./index.html"
@@ -67,6 +67,7 @@
                 }
             })
         })
-    </script> 
+    </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +60,8 @@
                 当前位置： <a href="#">首页</a> &gt; <a href="#">科技</a> &gt; 文章详情
             </div>
             <h3 class="article_title" id="title"></h3>
-            <div class="article_info"><span id="author"></span> 发布于 <span id="date"></span>&nbsp;&nbsp;&nbsp;分类: <span id="type_name"></span>
+            <div class="article_info"><span id="author"></span> 发布于 <span id="date"></span>&nbsp;&nbsp;&nbsp;分类: <span
+                    id="type_name"></span>
                 &nbsp;&nbsp;&nbsp;阅读:( <span id="read"></span> )&nbsp;&nbsp;&nbsp;评论: (<span id="comment"></span>)</div>
             <div class="article_con" id="content">
 
@@ -99,7 +101,7 @@
             </div>
 
             <div class="comment_list_con" id="comment_list">
-                
+
             </div>
         </div>
         <div class="right_con setfl">
@@ -206,10 +208,10 @@
         {{/each}}
 
     </script>
-    
+
     <script>
 
-        dayjs.locale('zh-cn') ; // 全局设置，中文
+        dayjs.locale('zh-cn'); // 全局设置，中文
         // 使用插件
         dayjs.extend(dayjs_plugin_relativeTime);
 
@@ -222,27 +224,27 @@
         // alert(id)
 
         // 2. 调用接口，获取这篇文章的详情，显示到页面上
-        article.getDetail(id).then(function(res){
+        article.getDetail(id).then((res) => {
             console.log(res);
-            if(res.code == 200){
+            if (res.code == 200) {
                 var t = res.data
                 // 给对应的dom元素赋值
-                $('#author').html( t.author);
+                $('#author').html(t.author);
                 $('#comment').html(t.comment);
                 $('#content').html(t.content);
                 $('#date').html(t.date);
                 //上，下文章导航
                 // 有的文章有一篇，有的可能没有，所以要先判断一下。
-                if(t.prev) {
-                    $('#prev').attr('href','./article.html?id='+t.prev.id);
+                if (t.prev) {
+                    $('#prev').attr('href', './article.html?id=' + t.prev.id);
                     $('#prev').text(t.prev.title);
                 } else {
                     $('#prev').text('无');
                 }
-                if(t.next) {
-                    $('#next').attr('href','./article.html?id='+t.next.id)
+                if (t.next) {
+                    $('#next').attr('href', './article.html?id=' + t.next.id)
                     $('#next').text(t.next.title)
-                }else {
+                } else {
                     $('#next').text('无');
                 }
 
@@ -251,26 +253,26 @@
                 $('#title').html(t.title);
                 $('#type_name').html(t.type_name);
 
-            } 
+            }
         })
 
         // 3. 获取并显示评论
         getComment()
         // 4. 添加评论
-        $('#btn').click(function(){
+        $('#btn').click(() => {
             // - 收集用户信息
             var name = $('#comment_name').val().trim()
             var content = $('#comment_content').val().trim()
 
-            if(name.length === 0 || content.length ===0){
+            if (name.length === 0 || content.length === 0) {
                 bootbox.alert("不能为空");
                 return;
             }
 
             // - 调用接口，根据反馈做后续动作
-            comment.add(name,content, id).then(function(res){
+            comment.add(name, content, id).then((res) => {
                 console.log(res);
-                if(res.code === 200) {
+                if (res.code === 200) {
                     // 评论成功
                     // 1. 清空评论区域
                     $('#comment_name').val('')
@@ -280,28 +282,28 @@
                 }
             })
         })
-    
 
-        function getComment(){
-            comment.get(id).then(function(res){
-                if(res.code ==200){
+
+        function getComment() {
+            comment.get(id).then(function (res) {
+                if (res.code == 200) {
                     // 对每一条留言中的dt进行格式化
                     // 具体就是从 时间戳 转成相对时间
-                    res.data.forEach(function(item){
+                    res.data.forEach(function (item) {
                         // item.relativeTime = item.dt --->相对时间
                         // item.relativeTime = getRelativeTime(item.dt)
-                        item.relativeTime =  dayjs(item.dt).fromNow()
-                        
+                        item.relativeTime = dayjs(item.dt).fromNow()
+
                     })
                     console.log(res.data);
                     var htmlStr = template('tmp', res)
-                    $('#comment_list').html( htmlStr )
+                    $('#comment_list').html(htmlStr)
                 }
             })
         }
 
         // 创建一个函数，专门用来把时间戳转成相对时间 
-        function getRelativeTime(dt){
+        function getRelativeTime(dt) {
             return dayjs(dt).fromNow();
         }
     </script>

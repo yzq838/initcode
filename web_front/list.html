@@ -55,13 +55,13 @@
 
             <!-- 分页 -->
             <ul id="pagination" class="pagination-sm"></ul>
-            
+
 
         </div>
         <div class="right_con setfl">
             <div class="common_wrap">
                 <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
-                <ul class="content_list"  id="rank">
+                <ul class="content_list" id="rank">
                     <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
                     <li><span class="second">2</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><span class="third">3</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
@@ -129,10 +129,10 @@
             <span>|</span>
             <a href="#">招聘人才</a>
             <span>|</span>
-            <a href="#">友情链接</a>		
+            <a href="#">友情链接</a>
         </div>
-        <p>CopyRight © 2019 深圳大事件信息技术股份有限公司   All Rights Reserved</p>
-        <p>电话：0755-****888    粤ICP备*******8号</p>
+        <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
+        <p>电话：0755-****888 粤ICP备*******8号</p>
     </div>
 
     <script src="./js/jquery-1.12.4.min.js"></script>
@@ -200,83 +200,83 @@
 
         // 2. 显示菜单导航菜单，并把当前的文章类别高亮显示 
         // 获取文章的类型并显示
-        category.get().then(function(res){
+        category.get().then(res => {
             // 补充一个属性来保存当前的类别编号，以方便在模板内部来获取这个编号
             res.curId = id
-     
+
             // 渲染结构
             var htmlStr = template('cate', res)
             // console.log(htmlStr);
             // 显示
             // 替换整个容器中的html
-            $('#left_menu').html(htmlStr); 
+            $('#left_menu').html(htmlStr);
 
             // 追加一些内容
-            $('#level_two_menu').append(htmlStr ) 
+            $('#level_two_menu').append(htmlStr)
 
             // res.data是一个数组，每一个元素就是一对象
             // 取出对象的id属性与当前地址栏中id进行比较，找到要显示在页面上的栏目的 文字
-            res.data.forEach(function(item){
+            res.data.forEach(item => {
                 console.log(item)
-                if(item.id == id) {
-                    $('#cateName').html( item.name)
+                if (item.id == id) {
+                    $('#cateName').html(item.name)
                     // alert( item.name )
                 }
             })
         })
-        
+
         // 3. 显示文章列表
         var curPage = 1; // 当前的要取回第几页的文章
         // 调用接口拿数据，并显示
         getAndShow()
-        
+
         // 4. 热门排行
         // id就是当前的类别编号
-        article.getRank(id).then(function(res){
+        article.getRank(id).then(res => {
             console.log(res);
-            if(res.code === 200){
+            if (res.code === 200) {
                 // 渲染
-                var htmlStr = template('tmpRank',res)
+                var htmlStr = template('tmpRank', res)
                 console.log(htmlStr);
-                $('#rank').html(htmlStr )
-                
+                $('#rank').html(htmlStr)
+
             } else {
                 alert(res.msg)
             }
         })
-        
-        
+
+
         // 定义一个函数，是为了在页码点击上去调用
         function getAndShow() {
-            article.getList(id,curPage).then(function(res){
+            article.getList(id, curPage).then(function (res) {
                 console.log(res);
                 // res.pages表示当前查询条件得到的数据的总页数
-                var htmlStr = template('tmpNews',res)
+                var htmlStr = template('tmpNews', res)
                 // 数据渲染
                 console.log(htmlStr);
-                $('#list').html( htmlStr)
+                $('#list').html(htmlStr)
 
                 //懒加载 它会自动挂到jquery上
                 $('.img').lazyload()
 
                 // 如果只有一页，则不需要显示分页条
-                if(res.pages <= 1){
-                    return 
+                if (res.pages <= 1) {
+                    return
                 }
                 // 分页的基础代码
-                $('#pagination').twbsPagination({             
-                    initiateStartPageClick:false,
+                $('#pagination').twbsPagination({
+                    initiateStartPageClick: false,
                     totalPages: res.pages, // 总页数
                     // 这个visiblePages有什么用处？
                     visiblePages: 2, // 最多可以显示的按钮
-                    first:'首页',
-                    prev:'上一页',
-                    next:'下一页',
-                    last:'尾页',
+                    first: '首页',
+                    prev: '上一页',
+                    next: '下一页',
+                    last: '尾页',
                     onPageClick: function (event, page) {
                         // page是当前用户点击的页码
                         // 更新全局变量，重新查询
-                        curPage = page 
+                        curPage = page
                         // 为什么不需要传入参数？ 它是如何达到获取指定页的数据 功能？
                         // 全局变量
                         getAndShow();
@@ -284,9 +284,9 @@
                 });
             })
         }
-        
 
-        
+
+
     </script>
 
 </body>

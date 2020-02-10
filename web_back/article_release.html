@@ -37,13 +37,14 @@
                     <div class="col-sm-10">
                         <input name="cover" type="file" id="cover">
                     </div>
-                    <img id="imgPreview" style="border:1px solid #ccc;padding:2px;margin-left:20px;width: 200px;" src="../web_back/images/default_cover.png" alt="">
+                    <img id="imgPreview" style="border:1px solid #ccc;padding:2px;margin-left:20px;width: 200px;"
+                        src="../web_back/images/default_cover.png" alt="">
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
                         <select id="selCategory" name="type" class="form-control">
-                            
+
                         </select>
                     </div>
                 </div>
@@ -94,56 +95,56 @@
         // 给btnAdd添加点击事件
         // (1) 收集用户信息,简单判断
         //（2）调用接口，实现添加，根据反馈，做后续操作
-        $('#btnAdd').click(function(){
+        $('#btnAdd').click(() => {
             // alert(1)
             // 获取表单中用户填入的信息
             // 注意form中的表单元素必须要有name属性，并且要与接口中需要的参数保持一致
-            var fd = new FormData (document.getElementById('myform'))
-            
+            var fd = new FormData(document.getElementById('myform'))
+
             // 手动补充一个参数
             fd.append('state', '已发布')
 
             // 获取富文本编辑器中的内容
             fd.set('content', tinyMCE.activeEditor.getContent())
 
-            article.add(fd).then(function(res){
+            article.add(fd).then(res => {
                 console.log(res);
-                if(res.code === 201){
+                if (res.code === 201) {
                     alert('发布成功');
                     // reset是表单（dom对象）的方法
                     // 用来重置
                     $('#myform')[0].reset();
                 } else {
-                    alert( res.msg)
-                }  
+                    alert(res.msg)
+                }
             })
         })
-    
-        
+
+
         // 2.获取文章类别，并显示 
-        category.get().then(function(res){
+        category.get().then(res => {
             console.log(res);
-            if(res.code == 200){
-                var htmlStr = template('tmp',res)
-                $('#selCategory').html( htmlStr )
-            }else {
+            if (res.code == 200) {
+                var htmlStr = template('tmp', res)
+                $('#selCategory').html(htmlStr)
+            } else {
                 alert(res.msg)
             }
         })
-    
+
         // 3. 图片预览
-        $('#cover').change(function(){
+        $('#cover').change(function () {
             console.log(1);
-            
+
             // 用户在input上进行了操作
             // this就是当前的dom元素
             // console.log(this);
             // console.log( this.files); //当前用户所有选中的文件放在这里这集合中
             // console.log( this.files[0]); //选中第一个文件
-            
+
             // 1. 获取当前用户所选中的那个文件
-            var curFile =  this.files[0]
-            if(curFile) {
+            var curFile = this.files[0]
+            if (curFile) {
                 console.log(curFile);
                 // URL.createObjectURL(文件对象) 
                 // 是一个浏览器提供的一个方法：用于创建对象的临时连接地址。
